@@ -15,7 +15,7 @@ spec:
       serviceAccountName: humangov-pod-execution-role
       containers:
         - name: humangov-python-app-florida
-          image: public.ecr.aws/v1y4k1q2/humangov-app:latest
+          image: CONTAINER_IMAGE
           env:
             - name: AWS_BUCKET
               value: 'humangov-florida-s3-fen'
@@ -62,7 +62,8 @@ spec:
             - containerPort: 80
           volumeMounts:
             - name: humangov-nginx-config-florida-vol
-              mountPath: /etc/nginx/
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
       volumes:
         - name: humangov-nginx-config-florida-vol
           configMap:
